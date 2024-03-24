@@ -1,0 +1,195 @@
+openapi: 3.0.3
+info:
+  title: ETFGuardian 3.0
+  description: etf api
+  version: 1.0.11
+
+paths:
+  /etfs:
+    get:
+      tags:
+        - etf
+      summary: summary of a specific etf
+      description: summary of a specific etf
+      operationId: getSpecificETF
+      parameters:
+        - name: symbol
+          in: query
+          description: Stock symbol
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'          
+        '404':
+          description: ETF not found
+  /etfs/popular:
+    get:
+      tags:
+        - etf
+      summary: list of popular etf
+      description: list of popular etf
+      operationId: getPopularETF
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PopularResponse'          
+        '404':
+          description: popular ETFs not found
+  /watchlist/{id}:
+    get:
+      tags:
+        - etf
+      summary: watchlist of user
+      description: watchlist of user
+      operationId: getWatchlistById
+      parameters:
+        - name: id
+          in: path
+          description: user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatchListResponse'          
+        '404':
+          description: No watchlist of user is found
+    post:
+      tags:
+        - etf
+      summary: add etf to watchlist
+      description: add etf to watchlist
+      operationId: addETFToWatchlist
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+        - name: symbol
+          in: query
+          description: Stock symbol
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: add etf to watchlist
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WatchlistRequest'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatchlistRequest'
+                
+    delete:
+      tags:
+        - etf
+      summary: delete etf
+      description: delete etf
+      operationId: deleteETF
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+        - name: symbol
+          in: query
+          description: Stock symbol
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid etf value
+  
+components:
+  schemas:
+    WatchlistRequest:
+      type: object
+      properties:
+        name:
+          type: string
+    WatchListItem:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: string
+        1month:
+          type: string
+        3month:
+          type: string
+        1year:
+          type: string
+        3year:
+          type: string
+        5year:
+          type: string
+          
+    WatchListResponse:
+      type: object
+      properties:
+        ETFs:
+            type: array
+            items:
+              $ref: '#/components/schemas/WatchListItem'
+    
+    PopularResponse:
+      type: object
+      properties:
+        ETFs:
+            type: array
+            items:
+              $ref: '#/components/schemas/PopularETF'
+    PopularETF:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+        change:
+          type: string
+        totalReturn:
+          type: string
+          
+    SummaryResponse:
+      type: object
+      properties:
+        Indicators:
+            type: array
+            items:
+              $ref: '#/components/schemas/Indicator'
+    Indicator:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: integer
+        action:
+          type: string
+   
