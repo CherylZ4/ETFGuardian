@@ -1,0 +1,11 @@
+spring:
+  application:
+      name:guardian
+
+api:
+  key:
+
+logging:
+  level:
+    root: INFO
+   # root: DEB
