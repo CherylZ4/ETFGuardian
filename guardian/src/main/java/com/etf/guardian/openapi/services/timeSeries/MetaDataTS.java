@@ -1,7 +1,7 @@
 package com.etf.guardian.openapi.services.timeSeries;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class MetaData {
+public class MetaDataTS {
     @JsonProperty("1. Information")
     private String information;
 

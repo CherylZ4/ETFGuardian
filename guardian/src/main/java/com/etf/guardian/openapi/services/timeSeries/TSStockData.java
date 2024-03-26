@@ -6,17 +6,17 @@ import java.util.Map;
 
 public class TSStockData {
     @JsonProperty("Meta Data")
-    private MetaData metaData;
+    private MetaDataTS metaDataTS;
 
     @JsonProperty("Time Series (5min)")
     private Map<String, TimeSeriesData> timeSeries;
 
-    public MetaData getMetaData() {
-        return metaData;
+    public MetaDataTS getMetaData() {
+        return metaDataTS;
     }
 
-    public void setMetaData(MetaData metaData) {
-        this.metaData = metaData;
+    public void setMetaData(MetaDataTS metaDataTS) {
+        this.metaDataTS = metaDataTS;
     }
 
     public Map<String, TimeSeriesData> getTimeSeries() {

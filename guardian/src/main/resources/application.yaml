@@ -3,7 +3,7 @@ spring:
       name:guardian
 
 api:
-  key:
+  key: 7O9HE2KEG0T7CRE5
 
 logging:
   level:
