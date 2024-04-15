@@ -11,13 +11,7 @@ public class MetaDataTS {
     @JsonProperty("3. Last Refreshed")
     private String lastRefreshed;
 
-    @JsonProperty("4. Interval")
-    private String interval;
-
-    @JsonProperty("5. Output Size")
-    private String outputSize;
-
-    @JsonProperty("6. Time Zone")
+    @JsonProperty("4. Time Zone")
     private String timeZone;
 
     public String getInformation() {
@@ -42,22 +36,6 @@ public class MetaDataTS {
 
     public void setLastRefreshed(String lastRefreshed) {
         this.lastRefreshed = lastRefreshed;
-    }
-
-    public String getInterval() {
-        return interval;
-    }
-
-    public void setInterval(String interval) {
-        this.interval = interval;
-    }
-
-    public String getOutputSize() {
-        return outputSize;
-    }
-
-    public void setOutputSize(String outputSize) {
-        this.outputSize = outputSize;
     }
 
     public String getTimeZone() {

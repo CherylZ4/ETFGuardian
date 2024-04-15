@@ -8,7 +8,7 @@ public class TSStockData {
     @JsonProperty("Meta Data")
     private MetaDataTS metaDataTS;
 
-    @JsonProperty("Time Series (5min)")
+    @JsonProperty("Weekly Time Series")
     private Map<String, TimeSeriesData> timeSeries;
 
     public MetaDataTS getMetaData() {

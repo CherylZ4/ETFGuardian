@@ -7,5 +7,5 @@ api:
 
 logging:
   level:
-    root: INFO
-   # root: DEB
+#    root: INFO
+    root: DEBUG
